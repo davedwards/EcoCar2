@@ -1,0 +1,23 @@
+#ifndef CAN_SENT_H
+#define CAN_SENT_H
+
+#include <qdebug.h>
+#include <QObject>
+#include <QVariant>
+#include <QProcess>
+
+class CanSent : public QObject
+{
+    Q_OBJECT
+
+public:
+
+    Q_INVOKABLE void canConfigSend(){
+        QStringList cmdConfigSent;
+        cmdConfigSent.append("canconfig can1 bitrate 33330 ctrlmode triple-sampling on");
+        cmdConfigSent.append("ifconfig can1 up");
+        cmdConfigSent.append("ifconfig can1 down");
+    }
+};
+
+#endif // CAN_SENT_H
